@@ -1,17 +1,22 @@
 class Node {
-    private String value;
+    private Character value;
     private boolean visited;
+    private boolean isCharacter;
 
-    public Node(String value) {
+    public Node(Character value) {
         this.value = value;
         this.visited = false;
+
+        if(Character.isUpperCase(value)){
+            this.isCharacter = true;
+        } 
     }
 
-    public String getValue() {
+    public Character getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(Character value) {
         this.value = value;
     }
 
@@ -21,6 +26,14 @@ class Node {
 
     public void setVisited(boolean visited) {
         this.visited = visited;
+    }
+
+    public boolean isCharacter() {
+        return isCharacter;
+    }
+
+    public void setCharacter(boolean character) {
+        isCharacter = character;
     }
 
     
