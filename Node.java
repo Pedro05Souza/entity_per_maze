@@ -36,6 +36,13 @@ class Node {
         isCharacter = character;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Node{" +
+                "value=" + value +
+                ", visited=" + visited +
+                ", isCharacter=" + isCharacter +
+                '}';
+    }
 
 }
