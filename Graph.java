@@ -24,6 +24,7 @@ public void addEdge(Node v, Node w){
 }
 
 public ArrayList<Node> getNeighbors(Node v){
+    System.out.println("Getting neighbors of: " + v.getValue());
     return adjList.get(v);
 }
 
@@ -31,7 +32,7 @@ public void printGraph(){
     for(Node v : adjList.keySet()){
         System.out.print(v.getValue() + ": ");
         for(Node w : adjList.get(v)){
-            System.out.print(w.getValue() + " ");
+            System.out.print(w.getValue() + ", ");
         }
         System.out.println();
     }
