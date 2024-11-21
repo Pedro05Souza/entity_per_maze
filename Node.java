@@ -1,15 +1,14 @@
+import java.util.HashMap;
+
 class Node {
     private Character value;
     private boolean visited;
-    private boolean isCharacter;
+    private String character;
 
     public Node(Character value) {
         this.value = value;
         this.visited = false;
-
-        if(Character.isUpperCase(value)){
-            this.isCharacter = true;
-        } 
+        this.character = characterHashMap();
     }
 
     public Character getValue() {
@@ -28,12 +27,19 @@ class Node {
         this.visited = visited;
     }
 
-    public boolean isCharacter() {
-        return isCharacter;
+    public String getCharacter() {
+        return character;
     }
 
-    public void setCharacter(boolean character) {
-        isCharacter = character;
+    private String characterHashMap(){
+        HashMap<Character, String> charToString = new HashMap<>();
+
+        charToString.put('D', "Goblin");
+        charToString.put('E', "Arqueiro");
+        charToString.put('A', "Gnomo");
+        charToString.put('C', "Cavaleiro");
+        charToString.put('F', "Feijao");
+        return charToString.get(this.value);
     }
 
     @Override
@@ -41,7 +47,7 @@ class Node {
         return "Node{" +
                 "value=" + value +
                 ", visited=" + visited +
-                ", isCharacter=" + isCharacter +
+                ", characterType=" + character +
                 '}';
     }
 

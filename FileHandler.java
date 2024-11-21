@@ -4,7 +4,7 @@ import java.util.List;
 
 public class FileHandler {
 
-    public static void read(String file) {
+    public static Graph read(String file) {
         Graph graph = new Graph();
 
         try {
@@ -14,16 +14,12 @@ public class FileHandler {
                 lines.set(i, lines.get(i).replaceAll("\\s", ""));
             }
               
-              for(int k = 1; k < 2; k++){
+              for(int k = 1; k < lines.size(); k++){
 
                   for(int i = 0; i < lines.get(k).length(); i++){
 
                     Node node = new Node(lines.get(k).charAt(i));
-                    
-                    if(Character.isUpperCase(node.getValue())){
-                        node.setCharacter(true);
-                    }
-
+                
                     Character nodeValue = Character.toUpperCase(node.getValue());
 
                     graph.addVertex(node);
@@ -53,14 +49,31 @@ public class FileHandler {
                             graph.addEdge(node, node2);
                         }
                     }
-
-                    System.out.println(graph.getNeighbors(node));
                       
                   }
               }
+              return graph;
         } catch (Exception e) {
             System.out.println("Error reading file" + e);
+            return null;
         }
+    }
+
+    public static int searchZones(Graph graph, Node current, int characterCount){
+
+        System.out.println("Current node: " + current);
+
+        if (graph.getNeighbors(current).isEmpty() || current.isVisited()) {
+            return characterCount;
+        }
+
+        current.setVisited(true);
+
+        for(Node neighbor : graph.getNeighbors(current)){
+            searchZones(graph, neighbor, characterCount);
+        }
+
+        return characterCount;
     }
 
 }

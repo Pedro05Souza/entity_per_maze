@@ -28,6 +28,10 @@ public ArrayList<Node> getNeighbors(Node v){
     return adjList.get(v);
 }
 
+public Node getInitialNode(){
+    return adjList.keySet().iterator().next();
+}
+
 public void printGraph(){
     for(Node v : adjList.keySet()){
         System.out.print(v.getValue() + ": ");
