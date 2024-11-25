@@ -2,12 +2,7 @@ import java.io.IOException;
 
 public class App {
     public static void main(String[] args) throws IOException {
-        Graph graph = FileHandler.read("CD/caso40_2.txt");	
-
-        Node start = graph.getInitialNode();
-
-        graph.getNeighbors(start);
-
-        FileHandler.searchZones(graph, start, 0);
+        FileHandler fileHandler = new FileHandler("casos-5/casos-5/caso40_5a.txt");
+        fileHandler.findLabirinthZones();
     }   
 }
